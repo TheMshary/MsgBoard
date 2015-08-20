@@ -1,0 +1,4 @@
+*.pyc
+*/media/*
+*/migrations*
+project/settings.py
