@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% block body %}
+
+
+
+<!-- Begin Body -->
+<div class="container">
+	<div class="row">
+		<div class="col-md-9">
+			<h2 id="sec0">{{ board.name }}</h2>
+			{% for comment in comments %}
+				<div class="panel panel-default">
+					<div class="panel-heading">
+						<h5>{{ comment.user.username }}</h5>
+					</div>
+					<div class="panel-body">
+						{{ comment }}
+					</div>
+				</div>
+			{% endfor %}
+		</div>
+	</div>
+{% if user.is_authenticated %}
+	<form action="/mkcomment/{{board.pk}}/" method="POST">
+		{% csrf_token %}
+		<textarea rows="3" cols="100" style="margin-left:20px" name="text"></textarea>
+		<input type="submit" value="Add comment">
+	</form>
+{% endif %}		
+</div>
+{% endblock %}

@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% block body %}
+
+{% block user %}{% endblock %}<hr>
+
+{% if user.is_authenticated %}
+	<form action="/mkdiv/" method="POST">
+		{% csrf_token %}
+
+		{{ divform.as_p }}
+
+		<input type="submit" value="Create Division">
+	</form>
+{% endif %}
+<ul>
+	{% for div in divs %}
+		<li><a href="div/{{div.pk}}">"{{ div.name }}"</a> by -{{ div.user.username }}</li>
+	{% endfor %}
+</ul>
+{% if user.is_authenticated %}
+	<form action="/clear_divs/" method="POST">
+		{% csrf_token %}
+		<input type="submit" value="Clear Divisions"> 
+	</form>
+{% endif %}
+
+{% endblock %}
