@@ -1,0 +1,241 @@
+[Thu Aug 20 11:40:52 2015] [error] [client 62.215.110.66] mod_wsgi (pid=30577): Target WSGI script '/sites/projects/MsgBoard/project/wsgi.py' cannot be loaded as Python module.
+[Thu Aug 20 11:40:52 2015] [error] [client 62.215.110.66] mod_wsgi (pid=30577): Exception occurred processing WSGI script '/sites/projects/MsgBoard/project/wsgi.py'.
+[Thu Aug 20 11:40:52 2015] [error] [client 62.215.110.66] Traceback (most recent call last):
+[Thu Aug 20 11:40:52 2015] [error] [client 62.215.110.66]   File "/sites/projects/MsgBoard/project/wsgi.py", line 16, in <module>
+[Thu Aug 20 11:40:52 2015] [error] [client 62.215.110.66]     application = get_wsgi_application()
+[Thu Aug 20 11:40:52 2015] [error] [client 62.215.110.66]   File "/usr/local/lib/python2.7/dist-packages/django/core/wsgi.py", line 14, in get_wsgi_application
+[Thu Aug 20 11:40:52 2015] [error] [client 62.215.110.66]     django.setup()
+[Thu Aug 20 11:40:52 2015] [error] [client 62.215.110.66]   File "/usr/local/lib/python2.7/dist-packages/django/__init__.py", line 18, in setup
+[Thu Aug 20 11:40:52 2015] [error] [client 62.215.110.66]     apps.populate(settings.INSTALLED_APPS)
+[Thu Aug 20 11:40:52 2015] [error] [client 62.215.110.66]   File "/usr/local/lib/python2.7/dist-packages/django/apps/registry.py", line 108, in populate
+[Thu Aug 20 11:40:52 2015] [error] [client 62.215.110.66]     app_config.import_models(all_models)
+[Thu Aug 20 11:40:52 2015] [error] [client 62.215.110.66]   File "/usr/local/lib/python2.7/dist-packages/django/apps/config.py", line 198, in import_models
+[Thu Aug 20 11:40:52 2015] [error] [client 62.215.110.66]     self.models_module = import_module(models_module_name)
+[Thu Aug 20 11:40:52 2015] [error] [client 62.215.110.66]   File "/usr/lib/python2.7/importlib/__init__.py", line 37, in import_module
+[Thu Aug 20 11:40:52 2015] [error] [client 62.215.110.66]     __import__(name)
+[Thu Aug 20 11:40:52 2015] [error] [client 62.215.110.66]   File "/usr/local/lib/python2.7/dist-packages/django/contrib/auth/models.py", line 41, in <module>
+[Thu Aug 20 11:40:52 2015] [error] [client 62.215.110.66]     class Permission(models.Model):
+[Thu Aug 20 11:40:52 2015] [error] [client 62.215.110.66]   File "/usr/local/lib/python2.7/dist-packages/django/db/models/base.py", line 139, in __new__
+[Thu Aug 20 11:40:52 2015] [error] [client 62.215.110.66]     new_class.add_to_class('_meta', Options(meta, **kwargs))
+[Thu Aug 20 11:40:52 2015] [error] [client 62.215.110.66]   File "/usr/local/lib/python2.7/dist-packages/django/db/models/base.py", line 324, in add_to_class
+[Thu Aug 20 11:40:52 2015] [error] [client 62.215.110.66]     value.contribute_to_class(cls, name)
+[Thu Aug 20 11:40:52 2015] [error] [client 62.215.110.66]   File "/usr/local/lib/python2.7/dist-packages/django/db/models/options.py", line 250, in contribute_to_class
+[Thu Aug 20 11:40:52 2015] [error] [client 62.215.110.66]     self.db_table = truncate_name(self.db_table, connection.ops.max_name_length())
+[Thu Aug 20 11:40:52 2015] [error] [client 62.215.110.66]   File "/usr/local/lib/python2.7/dist-packages/django/db/__init__.py", line 36, in __getattr__
+[Thu Aug 20 11:40:52 2015] [error] [client 62.215.110.66]     return getattr(connections[DEFAULT_DB_ALIAS], item)
+[Thu Aug 20 11:40:52 2015] [error] [client 62.215.110.66]   File "/usr/local/lib/python2.7/dist-packages/django/db/utils.py", line 240, in __getitem__
+[Thu Aug 20 11:40:52 2015] [error] [client 62.215.110.66]     backend = load_backend(db['ENGINE'])
+[Thu Aug 20 11:40:52 2015] [error] [client 62.215.110.66]   File "/usr/local/lib/python2.7/dist-packages/django/db/utils.py", line 111, in load_backend
+[Thu Aug 20 11:40:52 2015] [error] [client 62.215.110.66]     return import_module('%s.base' % backend_name)
+[Thu Aug 20 11:40:52 2015] [error] [client 62.215.110.66]   File "/usr/lib/python2.7/importlib/__init__.py", line 37, in import_module
+[Thu Aug 20 11:40:52 2015] [error] [client 62.215.110.66]     __import__(name)
+[Thu Aug 20 11:40:52 2015] [error] [client 62.215.110.66]   File "/usr/local/lib/python2.7/dist-packages/django/db/backends/mysql/base.py", line 27, in <module>
+[Thu Aug 20 11:40:52 2015] [error] [client 62.215.110.66]     raise ImproperlyConfigured("Error loading MySQLdb module: %s" % e)
+[Thu Aug 20 11:40:52 2015] [error] [client 62.215.110.66] ImproperlyConfigured: Error loading MySQLdb module: No module named MySQLdb
+[Thu Aug 20 11:40:53 2015] [error] [client 62.215.110.66] mod_wsgi (pid=30577): Target WSGI script '/sites/projects/MsgBoard/project/wsgi.py' cannot be loaded as Python module.
+[Thu Aug 20 11:40:53 2015] [error] [client 62.215.110.66] mod_wsgi (pid=30577): Exception occurred processing WSGI script '/sites/projects/MsgBoard/project/wsgi.py'.
+[Thu Aug 20 11:40:53 2015] [error] [client 62.215.110.66] Traceback (most recent call last):
+[Thu Aug 20 11:40:53 2015] [error] [client 62.215.110.66]   File "/sites/projects/MsgBoard/project/wsgi.py", line 16, in <module>
+[Thu Aug 20 11:40:53 2015] [error] [client 62.215.110.66]     application = get_wsgi_application()
+[Thu Aug 20 11:40:53 2015] [error] [client 62.215.110.66]   File "/usr/local/lib/python2.7/dist-packages/django/core/wsgi.py", line 14, in get_wsgi_application
+[Thu Aug 20 11:40:53 2015] [error] [client 62.215.110.66]     django.setup()
+[Thu Aug 20 11:40:53 2015] [error] [client 62.215.110.66]   File "/usr/local/lib/python2.7/dist-packages/django/__init__.py", line 18, in setup
+[Thu Aug 20 11:40:53 2015] [error] [client 62.215.110.66]     apps.populate(settings.INSTALLED_APPS)
+[Thu Aug 20 11:40:53 2015] [error] [client 62.215.110.66]   File "/usr/local/lib/python2.7/dist-packages/django/apps/registry.py", line 78, in populate
+[Thu Aug 20 11:40:53 2015] [error] [client 62.215.110.66]     raise RuntimeError("populate() isn't reentrant")
+[Thu Aug 20 11:40:53 2015] [error] [client 62.215.110.66] RuntimeError: populate() isn't reentrant
+[Thu Aug 20 11:40:54 2015] [error] [client 62.215.110.66] mod_wsgi (pid=30577): Target WSGI script '/sites/projects/MsgBoard/project/wsgi.py' cannot be loaded as Python module.
+[Thu Aug 20 11:40:54 2015] [error] [client 62.215.110.66] mod_wsgi (pid=30577): Exception occurred processing WSGI script '/sites/projects/MsgBoard/project/wsgi.py'.
+[Thu Aug 20 11:40:54 2015] [error] [client 62.215.110.66] Traceback (most recent call last):
+[Thu Aug 20 11:40:54 2015] [error] [client 62.215.110.66]   File "/sites/projects/MsgBoard/project/wsgi.py", line 16, in <module>
+[Thu Aug 20 11:40:54 2015] [error] [client 62.215.110.66]     application = get_wsgi_application()
+[Thu Aug 20 11:40:54 2015] [error] [client 62.215.110.66]   File "/usr/local/lib/python2.7/dist-packages/django/core/wsgi.py", line 14, in get_wsgi_application
+[Thu Aug 20 11:40:54 2015] [error] [client 62.215.110.66]     django.setup()
+[Thu Aug 20 11:40:54 2015] [error] [client 62.215.110.66]   File "/usr/local/lib/python2.7/dist-packages/django/__init__.py", line 18, in setup
+[Thu Aug 20 11:40:54 2015] [error] [client 62.215.110.66]     apps.populate(settings.INSTALLED_APPS)
+[Thu Aug 20 11:40:54 2015] [error] [client 62.215.110.66]   File "/usr/local/lib/python2.7/dist-packages/django/apps/registry.py", line 78, in populate
+[Thu Aug 20 11:40:54 2015] [error] [client 62.215.110.66]     raise RuntimeError("populate() isn't reentrant")
+[Thu Aug 20 11:40:54 2015] [error] [client 62.215.110.66] RuntimeError: populate() isn't reentrant
+[Thu Aug 20 11:40:54 2015] [error] [client 62.215.110.66] mod_wsgi (pid=30577): Target WSGI script '/sites/projects/MsgBoard/project/wsgi.py' cannot be loaded as Python module.
+[Thu Aug 20 11:40:54 2015] [error] [client 62.215.110.66] mod_wsgi (pid=30577): Exception occurred processing WSGI script '/sites/projects/MsgBoard/project/wsgi.py'.
+[Thu Aug 20 11:40:54 2015] [error] [client 62.215.110.66] Traceback (most recent call last):
+[Thu Aug 20 11:40:54 2015] [error] [client 62.215.110.66]   File "/sites/projects/MsgBoard/project/wsgi.py", line 16, in <module>
+[Thu Aug 20 11:40:54 2015] [error] [client 62.215.110.66]     application = get_wsgi_application()
+[Thu Aug 20 11:40:54 2015] [error] [client 62.215.110.66]   File "/usr/local/lib/python2.7/dist-packages/django/core/wsgi.py", line 14, in get_wsgi_application
+[Thu Aug 20 11:40:54 2015] [error] [client 62.215.110.66]     django.setup()
+[Thu Aug 20 11:40:54 2015] [error] [client 62.215.110.66]   File "/usr/local/lib/python2.7/dist-packages/django/__init__.py", line 18, in setup
+[Thu Aug 20 11:40:54 2015] [error] [client 62.215.110.66]     apps.populate(settings.INSTALLED_APPS)
+[Thu Aug 20 11:40:54 2015] [error] [client 62.215.110.66]   File "/usr/local/lib/python2.7/dist-packages/django/apps/registry.py", line 78, in populate
+[Thu Aug 20 11:40:54 2015] [error] [client 62.215.110.66]     raise RuntimeError("populate() isn't reentrant")
+[Thu Aug 20 11:40:54 2015] [error] [client 62.215.110.66] RuntimeError: populate() isn't reentrant
+[Thu Aug 20 12:23:14 2015] [error] [client 62.215.110.66] mod_wsgi (pid=30577): Target WSGI script '/sites/projects/MsgBoard/project/wsgi.py' cannot be loaded as Python module.
+[Thu Aug 20 12:23:14 2015] [error] [client 62.215.110.66] mod_wsgi (pid=30577): Exception occurred processing WSGI script '/sites/projects/MsgBoard/project/wsgi.py'.
+[Thu Aug 20 12:23:14 2015] [error] [client 62.215.110.66] Traceback (most recent call last):
+[Thu Aug 20 12:23:14 2015] [error] [client 62.215.110.66]   File "/sites/projects/MsgBoard/project/wsgi.py", line 16, in <module>
+[Thu Aug 20 12:23:14 2015] [error] [client 62.215.110.66]     application = get_wsgi_application()
+[Thu Aug 20 12:23:14 2015] [error] [client 62.215.110.66]   File "/usr/local/lib/python2.7/dist-packages/django/core/wsgi.py", line 14, in get_wsgi_application
+[Thu Aug 20 12:23:14 2015] [error] [client 62.215.110.66]     django.setup()
+[Thu Aug 20 12:23:14 2015] [error] [client 62.215.110.66]   File "/usr/local/lib/python2.7/dist-packages/django/__init__.py", line 18, in setup
+[Thu Aug 20 12:23:14 2015] [error] [client 62.215.110.66]     apps.populate(settings.INSTALLED_APPS)
+[Thu Aug 20 12:23:14 2015] [error] [client 62.215.110.66]   File "/usr/local/lib/python2.7/dist-packages/django/apps/registry.py", line 78, in populate
+[Thu Aug 20 12:23:14 2015] [error] [client 62.215.110.66]     raise RuntimeError("populate() isn't reentrant")
+[Thu Aug 20 12:23:14 2015] [error] [client 62.215.110.66] RuntimeError: populate() isn't reentrant
+[Thu Aug 20 12:23:14 2015] [error] [client 62.215.110.66] mod_wsgi (pid=30577): Target WSGI script '/sites/projects/MsgBoard/project/wsgi.py' cannot be loaded as Python module.
+[Thu Aug 20 12:23:14 2015] [error] [client 62.215.110.66] mod_wsgi (pid=30577): Exception occurred processing WSGI script '/sites/projects/MsgBoard/project/wsgi.py'.
+[Thu Aug 20 12:23:14 2015] [error] [client 62.215.110.66] Traceback (most recent call last):
+[Thu Aug 20 12:23:14 2015] [error] [client 62.215.110.66]   File "/sites/projects/MsgBoard/project/wsgi.py", line 16, in <module>
+[Thu Aug 20 12:23:14 2015] [error] [client 62.215.110.66]     application = get_wsgi_application()
+[Thu Aug 20 12:23:14 2015] [error] [client 62.215.110.66]   File "/usr/local/lib/python2.7/dist-packages/django/core/wsgi.py", line 14, in get_wsgi_application
+[Thu Aug 20 12:23:14 2015] [error] [client 62.215.110.66]     django.setup()
+[Thu Aug 20 12:23:14 2015] [error] [client 62.215.110.66]   File "/usr/local/lib/python2.7/dist-packages/django/__init__.py", line 18, in setup
+[Thu Aug 20 12:23:14 2015] [error] [client 62.215.110.66]     apps.populate(settings.INSTALLED_APPS)
+[Thu Aug 20 12:23:14 2015] [error] [client 62.215.110.66]   File "/usr/local/lib/python2.7/dist-packages/django/apps/registry.py", line 78, in populate
+[Thu Aug 20 12:23:14 2015] [error] [client 62.215.110.66]     raise RuntimeError("populate() isn't reentrant")
+[Thu Aug 20 12:23:14 2015] [error] [client 62.215.110.66] RuntimeError: populate() isn't reentrant
+[Thu Aug 20 12:23:15 2015] [error] [client 62.215.110.66] mod_wsgi (pid=30577): Target WSGI script '/sites/projects/MsgBoard/project/wsgi.py' cannot be loaded as Python module.
+[Thu Aug 20 12:23:15 2015] [error] [client 62.215.110.66] mod_wsgi (pid=30577): Exception occurred processing WSGI script '/sites/projects/MsgBoard/project/wsgi.py'.
+[Thu Aug 20 12:23:15 2015] [error] [client 62.215.110.66] Traceback (most recent call last):
+[Thu Aug 20 12:23:15 2015] [error] [client 62.215.110.66]   File "/sites/projects/MsgBoard/project/wsgi.py", line 16, in <module>
+[Thu Aug 20 12:23:15 2015] [error] [client 62.215.110.66]     application = get_wsgi_application()
+[Thu Aug 20 12:23:15 2015] [error] [client 62.215.110.66]   File "/usr/local/lib/python2.7/dist-packages/django/core/wsgi.py", line 14, in get_wsgi_application
+[Thu Aug 20 12:23:15 2015] [error] [client 62.215.110.66]     django.setup()
+[Thu Aug 20 12:23:15 2015] [error] [client 62.215.110.66]   File "/usr/local/lib/python2.7/dist-packages/django/__init__.py", line 18, in setup
+[Thu Aug 20 12:23:15 2015] [error] [client 62.215.110.66]     apps.populate(settings.INSTALLED_APPS)
+[Thu Aug 20 12:23:15 2015] [error] [client 62.215.110.66]   File "/usr/local/lib/python2.7/dist-packages/django/apps/registry.py", line 78, in populate
+[Thu Aug 20 12:23:15 2015] [error] [client 62.215.110.66]     raise RuntimeError("populate() isn't reentrant")
+[Thu Aug 20 12:23:15 2015] [error] [client 62.215.110.66] RuntimeError: populate() isn't reentrant
+[Thu Aug 20 12:23:16 2015] [error] [client 62.215.110.66] mod_wsgi (pid=30577): Target WSGI script '/sites/projects/MsgBoard/project/wsgi.py' cannot be loaded as Python module.
+[Thu Aug 20 12:23:16 2015] [error] [client 62.215.110.66] mod_wsgi (pid=30577): Exception occurred processing WSGI script '/sites/projects/MsgBoard/project/wsgi.py'.
+[Thu Aug 20 12:23:16 2015] [error] [client 62.215.110.66] Traceback (most recent call last):
+[Thu Aug 20 12:23:16 2015] [error] [client 62.215.110.66]   File "/sites/projects/MsgBoard/project/wsgi.py", line 16, in <module>
+[Thu Aug 20 12:23:16 2015] [error] [client 62.215.110.66]     application = get_wsgi_application()
+[Thu Aug 20 12:23:16 2015] [error] [client 62.215.110.66]   File "/usr/local/lib/python2.7/dist-packages/django/core/wsgi.py", line 14, in get_wsgi_application
+[Thu Aug 20 12:23:16 2015] [error] [client 62.215.110.66]     django.setup()
+[Thu Aug 20 12:23:16 2015] [error] [client 62.215.110.66]   File "/usr/local/lib/python2.7/dist-packages/django/__init__.py", line 18, in setup
+[Thu Aug 20 12:23:16 2015] [error] [client 62.215.110.66]     apps.populate(settings.INSTALLED_APPS)
+[Thu Aug 20 12:23:16 2015] [error] [client 62.215.110.66]   File "/usr/local/lib/python2.7/dist-packages/django/apps/registry.py", line 78, in populate
+[Thu Aug 20 12:23:16 2015] [error] [client 62.215.110.66]     raise RuntimeError("populate() isn't reentrant")
+[Thu Aug 20 12:23:16 2015] [error] [client 62.215.110.66] RuntimeError: populate() isn't reentrant
+[Thu Aug 20 12:23:17 2015] [error] [client 62.215.110.66] mod_wsgi (pid=30577): Target WSGI script '/sites/projects/MsgBoard/project/wsgi.py' cannot be loaded as Python module.
+[Thu Aug 20 12:23:17 2015] [error] [client 62.215.110.66] mod_wsgi (pid=30577): Exception occurred processing WSGI script '/sites/projects/MsgBoard/project/wsgi.py'.
+[Thu Aug 20 12:23:17 2015] [error] [client 62.215.110.66] Traceback (most recent call last):
+[Thu Aug 20 12:23:17 2015] [error] [client 62.215.110.66]   File "/sites/projects/MsgBoard/project/wsgi.py", line 16, in <module>
+[Thu Aug 20 12:23:17 2015] [error] [client 62.215.110.66]     application = get_wsgi_application()
+[Thu Aug 20 12:23:17 2015] [error] [client 62.215.110.66]   File "/usr/local/lib/python2.7/dist-packages/django/core/wsgi.py", line 14, in get_wsgi_application
+[Thu Aug 20 12:23:17 2015] [error] [client 62.215.110.66]     django.setup()
+[Thu Aug 20 12:23:17 2015] [error] [client 62.215.110.66]   File "/usr/local/lib/python2.7/dist-packages/django/__init__.py", line 18, in setup
+[Thu Aug 20 12:23:17 2015] [error] [client 62.215.110.66]     apps.populate(settings.INSTALLED_APPS)
+[Thu Aug 20 12:23:17 2015] [error] [client 62.215.110.66]   File "/usr/local/lib/python2.7/dist-packages/django/apps/registry.py", line 78, in populate
+[Thu Aug 20 12:23:17 2015] [error] [client 62.215.110.66]     raise RuntimeError("populate() isn't reentrant")
+[Thu Aug 20 12:23:17 2015] [error] [client 62.215.110.66] RuntimeError: populate() isn't reentrant
+[Thu Aug 20 12:23:17 2015] [error] [client 62.215.110.66] mod_wsgi (pid=30577): Target WSGI script '/sites/projects/MsgBoard/project/wsgi.py' cannot be loaded as Python module.
+[Thu Aug 20 12:23:17 2015] [error] [client 62.215.110.66] mod_wsgi (pid=30577): Exception occurred processing WSGI script '/sites/projects/MsgBoard/project/wsgi.py'.
+[Thu Aug 20 12:23:17 2015] [error] [client 62.215.110.66] Traceback (most recent call last):
+[Thu Aug 20 12:23:17 2015] [error] [client 62.215.110.66]   File "/sites/projects/MsgBoard/project/wsgi.py", line 16, in <module>
+[Thu Aug 20 12:23:17 2015] [error] [client 62.215.110.66]     application = get_wsgi_application()
+[Thu Aug 20 12:23:17 2015] [error] [client 62.215.110.66]   File "/usr/local/lib/python2.7/dist-packages/django/core/wsgi.py", line 14, in get_wsgi_application
+[Thu Aug 20 12:23:17 2015] [error] [client 62.215.110.66]     django.setup()
+[Thu Aug 20 12:23:17 2015] [error] [client 62.215.110.66]   File "/usr/local/lib/python2.7/dist-packages/django/__init__.py", line 18, in setup
+[Thu Aug 20 12:23:17 2015] [error] [client 62.215.110.66]     apps.populate(settings.INSTALLED_APPS)
+[Thu Aug 20 12:23:17 2015] [error] [client 62.215.110.66]   File "/usr/local/lib/python2.7/dist-packages/django/apps/registry.py", line 78, in populate
+[Thu Aug 20 12:23:17 2015] [error] [client 62.215.110.66]     raise RuntimeError("populate() isn't reentrant")
+[Thu Aug 20 12:23:17 2015] [error] [client 62.215.110.66] RuntimeError: populate() isn't reentrant
+[Thu Aug 20 12:26:35 2015] [error] [client 62.215.110.66] mod_wsgi (pid=32554): Target WSGI script '/sites/projects/MsgBoard/project/wsgi.py' cannot be loaded as Python module.
+[Thu Aug 20 12:26:35 2015] [error] [client 62.215.110.66] mod_wsgi (pid=32554): Exception occurred processing WSGI script '/sites/projects/MsgBoard/project/wsgi.py'.
+[Thu Aug 20 12:26:35 2015] [error] [client 62.215.110.66] Traceback (most recent call last):
+[Thu Aug 20 12:26:35 2015] [error] [client 62.215.110.66]   File "/sites/projects/MsgBoard/project/wsgi.py", line 16, in <module>
+[Thu Aug 20 12:26:35 2015] [error] [client 62.215.110.66]     application = get_wsgi_application()
+[Thu Aug 20 12:26:35 2015] [error] [client 62.215.110.66]   File "/usr/local/lib/python2.7/dist-packages/django/core/wsgi.py", line 14, in get_wsgi_application
+[Thu Aug 20 12:26:35 2015] [error] [client 62.215.110.66]     django.setup()
+[Thu Aug 20 12:26:35 2015] [error] [client 62.215.110.66]   File "/usr/local/lib/python2.7/dist-packages/django/__init__.py", line 18, in setup
+[Thu Aug 20 12:26:35 2015] [error] [client 62.215.110.66]     apps.populate(settings.INSTALLED_APPS)
+[Thu Aug 20 12:26:35 2015] [error] [client 62.215.110.66]   File "/usr/local/lib/python2.7/dist-packages/django/apps/registry.py", line 108, in populate
+[Thu Aug 20 12:26:35 2015] [error] [client 62.215.110.66]     app_config.import_models(all_models)
+[Thu Aug 20 12:26:35 2015] [error] [client 62.215.110.66]   File "/usr/local/lib/python2.7/dist-packages/django/apps/config.py", line 198, in import_models
+[Thu Aug 20 12:26:35 2015] [error] [client 62.215.110.66]     self.models_module = import_module(models_module_name)
+[Thu Aug 20 12:26:35 2015] [error] [client 62.215.110.66]   File "/usr/lib/python2.7/importlib/__init__.py", line 37, in import_module
+[Thu Aug 20 12:26:35 2015] [error] [client 62.215.110.66]     __import__(name)
+[Thu Aug 20 12:26:35 2015] [error] [client 62.215.110.66]   File "/usr/local/lib/python2.7/dist-packages/django/contrib/auth/models.py", line 41, in <module>
+[Thu Aug 20 12:26:35 2015] [error] [client 62.215.110.66]     class Permission(models.Model):
+[Thu Aug 20 12:26:35 2015] [error] [client 62.215.110.66]   File "/usr/local/lib/python2.7/dist-packages/django/db/models/base.py", line 139, in __new__
+[Thu Aug 20 12:26:35 2015] [error] [client 62.215.110.66]     new_class.add_to_class('_meta', Options(meta, **kwargs))
+[Thu Aug 20 12:26:35 2015] [error] [client 62.215.110.66]   File "/usr/local/lib/python2.7/dist-packages/django/db/models/base.py", line 324, in add_to_class
+[Thu Aug 20 12:26:35 2015] [error] [client 62.215.110.66]     value.contribute_to_class(cls, name)
+[Thu Aug 20 12:26:35 2015] [error] [client 62.215.110.66]   File "/usr/local/lib/python2.7/dist-packages/django/db/models/options.py", line 250, in contribute_to_class
+[Thu Aug 20 12:26:35 2015] [error] [client 62.215.110.66]     self.db_table = truncate_name(self.db_table, connection.ops.max_name_length())
+[Thu Aug 20 12:26:35 2015] [error] [client 62.215.110.66]   File "/usr/local/lib/python2.7/dist-packages/django/db/__init__.py", line 36, in __getattr__
+[Thu Aug 20 12:26:35 2015] [error] [client 62.215.110.66]     return getattr(connections[DEFAULT_DB_ALIAS], item)
+[Thu Aug 20 12:26:35 2015] [error] [client 62.215.110.66]   File "/usr/local/lib/python2.7/dist-packages/django/db/utils.py", line 240, in __getitem__
+[Thu Aug 20 12:26:35 2015] [error] [client 62.215.110.66]     backend = load_backend(db['ENGINE'])
+[Thu Aug 20 12:26:35 2015] [error] [client 62.215.110.66]   File "/usr/local/lib/python2.7/dist-packages/django/db/utils.py", line 111, in load_backend
+[Thu Aug 20 12:26:35 2015] [error] [client 62.215.110.66]     return import_module('%s.base' % backend_name)
+[Thu Aug 20 12:26:35 2015] [error] [client 62.215.110.66]   File "/usr/lib/python2.7/importlib/__init__.py", line 37, in import_module
+[Thu Aug 20 12:26:35 2015] [error] [client 62.215.110.66]     __import__(name)
+[Thu Aug 20 12:26:35 2015] [error] [client 62.215.110.66]   File "/usr/local/lib/python2.7/dist-packages/django/db/backends/mysql/base.py", line 27, in <module>
+[Thu Aug 20 12:26:35 2015] [error] [client 62.215.110.66]     raise ImproperlyConfigured("Error loading MySQLdb module: %s" % e)
+[Thu Aug 20 12:26:35 2015] [error] [client 62.215.110.66] ImproperlyConfigured: Error loading MySQLdb module: No module named MySQLdb
+[Thu Aug 20 12:26:35 2015] [error] [client 62.215.110.66] mod_wsgi (pid=32554): Target WSGI script '/sites/projects/MsgBoard/project/wsgi.py' cannot be loaded as Python module.
+[Thu Aug 20 12:26:35 2015] [error] [client 62.215.110.66] mod_wsgi (pid=32554): Exception occurred processing WSGI script '/sites/projects/MsgBoard/project/wsgi.py'.
+[Thu Aug 20 12:26:35 2015] [error] [client 62.215.110.66] Traceback (most recent call last):
+[Thu Aug 20 12:26:35 2015] [error] [client 62.215.110.66]   File "/sites/projects/MsgBoard/project/wsgi.py", line 16, in <module>
+[Thu Aug 20 12:26:35 2015] [error] [client 62.215.110.66]     application = get_wsgi_application()
+[Thu Aug 20 12:26:35 2015] [error] [client 62.215.110.66]   File "/usr/local/lib/python2.7/dist-packages/django/core/wsgi.py", line 14, in get_wsgi_application
+[Thu Aug 20 12:26:35 2015] [error] [client 62.215.110.66]     django.setup()
+[Thu Aug 20 12:26:35 2015] [error] [client 62.215.110.66]   File "/usr/local/lib/python2.7/dist-packages/django/__init__.py", line 18, in setup
+[Thu Aug 20 12:26:35 2015] [error] [client 62.215.110.66]     apps.populate(settings.INSTALLED_APPS)
+[Thu Aug 20 12:26:35 2015] [error] [client 62.215.110.66]   File "/usr/local/lib/python2.7/dist-packages/django/apps/registry.py", line 78, in populate
+[Thu Aug 20 12:26:35 2015] [error] [client 62.215.110.66]     raise RuntimeError("populate() isn't reentrant")
+[Thu Aug 20 12:26:35 2015] [error] [client 62.215.110.66] RuntimeError: populate() isn't reentrant
+[Thu Aug 20 12:31:52 2015] [error] [client 62.215.110.66] mod_wsgi (pid=307): Target WSGI script '/sites/projects/MsgBoard/project/wsgi.py' cannot be loaded as Python module.
+[Thu Aug 20 12:31:52 2015] [error] [client 62.215.110.66] mod_wsgi (pid=307): Exception occurred processing WSGI script '/sites/projects/MsgBoard/project/wsgi.py'.
+[Thu Aug 20 12:31:52 2015] [error] [client 62.215.110.66] Traceback (most recent call last):
+[Thu Aug 20 12:31:52 2015] [error] [client 62.215.110.66]   File "/sites/projects/MsgBoard/project/wsgi.py", line 16, in <module>
+[Thu Aug 20 12:31:52 2015] [error] [client 62.215.110.66]     application = get_wsgi_application()
+[Thu Aug 20 12:31:52 2015] [error] [client 62.215.110.66]   File "/usr/local/lib/python2.7/dist-packages/django/core/wsgi.py", line 14, in get_wsgi_application
+[Thu Aug 20 12:31:52 2015] [error] [client 62.215.110.66]     django.setup()
+[Thu Aug 20 12:31:52 2015] [error] [client 62.215.110.66]   File "/usr/local/lib/python2.7/dist-packages/django/__init__.py", line 18, in setup
+[Thu Aug 20 12:31:52 2015] [error] [client 62.215.110.66]     apps.populate(settings.INSTALLED_APPS)
+[Thu Aug 20 12:31:52 2015] [error] [client 62.215.110.66]   File "/usr/local/lib/python2.7/dist-packages/django/apps/registry.py", line 108, in populate
+[Thu Aug 20 12:31:52 2015] [error] [client 62.215.110.66]     app_config.import_models(all_models)
+[Thu Aug 20 12:31:52 2015] [error] [client 62.215.110.66]   File "/usr/local/lib/python2.7/dist-packages/django/apps/config.py", line 198, in import_models
+[Thu Aug 20 12:31:52 2015] [error] [client 62.215.110.66]     self.models_module = import_module(models_module_name)
+[Thu Aug 20 12:31:52 2015] [error] [client 62.215.110.66]   File "/usr/lib/python2.7/importlib/__init__.py", line 37, in import_module
+[Thu Aug 20 12:31:52 2015] [error] [client 62.215.110.66]     __import__(name)
+[Thu Aug 20 12:31:52 2015] [error] [client 62.215.110.66]   File "/usr/local/lib/python2.7/dist-packages/django/contrib/auth/models.py", line 41, in <module>
+[Thu Aug 20 12:31:52 2015] [error] [client 62.215.110.66]     class Permission(models.Model):
+[Thu Aug 20 12:31:52 2015] [error] [client 62.215.110.66]   File "/usr/local/lib/python2.7/dist-packages/django/db/models/base.py", line 139, in __new__
+[Thu Aug 20 12:31:52 2015] [error] [client 62.215.110.66]     new_class.add_to_class('_meta', Options(meta, **kwargs))
+[Thu Aug 20 12:31:52 2015] [error] [client 62.215.110.66]   File "/usr/local/lib/python2.7/dist-packages/django/db/models/base.py", line 324, in add_to_class
+[Thu Aug 20 12:31:52 2015] [error] [client 62.215.110.66]     value.contribute_to_class(cls, name)
+[Thu Aug 20 12:31:52 2015] [error] [client 62.215.110.66]   File "/usr/local/lib/python2.7/dist-packages/django/db/models/options.py", line 250, in contribute_to_class
+[Thu Aug 20 12:31:52 2015] [error] [client 62.215.110.66]     self.db_table = truncate_name(self.db_table, connection.ops.max_name_length())
+[Thu Aug 20 12:31:52 2015] [error] [client 62.215.110.66]   File "/usr/local/lib/python2.7/dist-packages/django/db/__init__.py", line 36, in __getattr__
+[Thu Aug 20 12:31:52 2015] [error] [client 62.215.110.66]     return getattr(connections[DEFAULT_DB_ALIAS], item)
+[Thu Aug 20 12:31:52 2015] [error] [client 62.215.110.66]   File "/usr/local/lib/python2.7/dist-packages/django/db/utils.py", line 240, in __getitem__
+[Thu Aug 20 12:31:52 2015] [error] [client 62.215.110.66]     backend = load_backend(db['ENGINE'])
+[Thu Aug 20 12:31:52 2015] [error] [client 62.215.110.66]   File "/usr/local/lib/python2.7/dist-packages/django/db/utils.py", line 111, in load_backend
+[Thu Aug 20 12:31:52 2015] [error] [client 62.215.110.66]     return import_module('%s.base' % backend_name)
+[Thu Aug 20 12:31:52 2015] [error] [client 62.215.110.66]   File "/usr/lib/python2.7/importlib/__init__.py", line 37, in import_module
+[Thu Aug 20 12:31:52 2015] [error] [client 62.215.110.66]     __import__(name)
+[Thu Aug 20 12:31:52 2015] [error] [client 62.215.110.66]   File "/usr/local/lib/python2.7/dist-packages/django/db/backends/mysql/base.py", line 27, in <module>
+[Thu Aug 20 12:31:52 2015] [error] [client 62.215.110.66]     raise ImproperlyConfigured("Error loading MySQLdb module: %s" % e)
+[Thu Aug 20 12:31:52 2015] [error] [client 62.215.110.66] ImproperlyConfigured: Error loading MySQLdb module: No module named MySQLdb
+[Thu Aug 20 12:31:52 2015] [error] [client 62.215.110.66] mod_wsgi (pid=307): Target WSGI script '/sites/projects/MsgBoard/project/wsgi.py' cannot be loaded as Python module.
+[Thu Aug 20 12:31:52 2015] [error] [client 62.215.110.66] mod_wsgi (pid=307): Exception occurred processing WSGI script '/sites/projects/MsgBoard/project/wsgi.py'.
+[Thu Aug 20 12:31:52 2015] [error] [client 62.215.110.66] Traceback (most recent call last):
+[Thu Aug 20 12:31:52 2015] [error] [client 62.215.110.66]   File "/sites/projects/MsgBoard/project/wsgi.py", line 16, in <module>
+[Thu Aug 20 12:31:52 2015] [error] [client 62.215.110.66]     application = get_wsgi_application()
+[Thu Aug 20 12:31:52 2015] [error] [client 62.215.110.66]   File "/usr/local/lib/python2.7/dist-packages/django/core/wsgi.py", line 14, in get_wsgi_application
+[Thu Aug 20 12:31:52 2015] [error] [client 62.215.110.66]     django.setup()
+[Thu Aug 20 12:31:52 2015] [error] [client 62.215.110.66]   File "/usr/local/lib/python2.7/dist-packages/django/__init__.py", line 18, in setup
+[Thu Aug 20 12:31:52 2015] [error] [client 62.215.110.66]     apps.populate(settings.INSTALLED_APPS)
+[Thu Aug 20 12:31:52 2015] [error] [client 62.215.110.66]   File "/usr/local/lib/python2.7/dist-packages/django/apps/registry.py", line 78, in populate
+[Thu Aug 20 12:31:52 2015] [error] [client 62.215.110.66]     raise RuntimeError("populate() isn't reentrant")
+[Thu Aug 20 12:31:52 2015] [error] [client 62.215.110.66] RuntimeError: populate() isn't reentrant
+[Thu Aug 20 12:55:12 2015] [error] [client 62.215.110.66] File does not exist: /sites/projects/MsgBoard/main/static/admin, referer: http://board.agulex.com/admin/login/?next=/admin/
+[Thu Aug 20 12:55:12 2015] [error] [client 62.215.110.66] File does not exist: /sites/projects/MsgBoard/main/static/admin, referer: http://board.agulex.com/admin/login/?next=/admin/
+[Thu Aug 20 12:55:15 2015] [error] [client 62.215.110.66] File does not exist: /sites/projects/MsgBoard/main/static/admin, referer: http://board.agulex.com/admin/login/?next=/admin/
+[Thu Aug 20 12:55:15 2015] [error] [client 62.215.110.66] File does not exist: /sites/projects/MsgBoard/main/static/admin, referer: http://board.agulex.com/admin/login/?next=/admin/
+[Thu Aug 20 12:55:24 2015] [error] [client 62.215.110.66] File does not exist: /sites/projects/MsgBoard/main/static/admin, referer: http://board.agulex.com/admin/login/?next=/admin/
+[Thu Aug 20 12:55:24 2015] [error] [client 62.215.110.66] File does not exist: /sites/projects/MsgBoard/main/static/admin, referer: http://board.agulex.com/admin/login/?next=/admin/
+[Thu Aug 20 12:59:00 2015] [error] ERROR :::: Division KAK already exists
