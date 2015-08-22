@@ -239,3 +239,11 @@
 [Thu Aug 20 12:55:24 2015] [error] [client 62.215.110.66] File does not exist: /sites/projects/MsgBoard/main/static/admin, referer: http://board.agulex.com/admin/login/?next=/admin/
 [Thu Aug 20 12:55:24 2015] [error] [client 62.215.110.66] File does not exist: /sites/projects/MsgBoard/main/static/admin, referer: http://board.agulex.com/admin/login/?next=/admin/
 [Thu Aug 20 12:59:00 2015] [error] ERROR :::: Division KAK already exists
+[Thu Aug 20 16:04:55 2015] [error] ERROR :::: Division Come here already exists
+[Thu Aug 20 16:22:42 2015] [error] /sites/virtualenvs/MsgBoard/lib/python2.7/site-packages/django/db/backends/mysql/base.py:124: Warning: Incorrect string value: '\\xF0\\x9F\\x98\\x88' for column 'text' at row 1
+[Thu Aug 20 16:22:42 2015] [error]   return self.cursor.execute(query, args)
+[Thu Aug 20 16:22:42 2015] [error] 
+[Fri Aug 21 18:05:36 2015] [error] ERROR :::: <ul class="errorlist"><li>name<ul class="errorlist"><li>This field is required.</li></ul></li></ul>
+[Sat Aug 22 10:15:36 2015] [error] ERROR :::: <ul class="errorlist"><li>name<ul class="errorlist"><li>This field is required.</li></ul></li></ul>
+[Sat Aug 22 10:17:09 2015] [error] ERROR :::: Division Castlevania already exists
+[Sat Aug 22 10:17:17 2015] [error] ERROR :::: <ul class="errorlist"><li>name<ul class="errorlist"><li>This field is required.</li></ul></li></ul>
