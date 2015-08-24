@@ -46,7 +46,7 @@
 		</div>
 	</div>
 	{% if user.is_authenticated %}
-		<form action="/mkcomment/{{board.pk}}/" method="POST">
+		<form id="haha"action="/mkcomment/{{board.pk}}/" method="POST">
 			{% csrf_token %}
 			<textarea rows="3" cols="40%" style="margin-left:20px" name="text"></textarea>
 			<input type="submit" value="Add comment">
@@ -78,47 +78,37 @@
 
 	$(document).ready(function() {
 		boardpk = $('#sec0').data('board');
+
 		comments = {{ list|safe }};
 		// append to div>#insertcomments
 		append_comments_rec(comments, -1);
+		$(".hahaform").hide();
 	});
 
-	$(".reply").on("focusout", function() {
-		$(".reply").hide();
-	});
-
-	$(".reply").on('click', function(event) {
-		$(".form").hide();
-		$("#form-"+event.target.id).show();
-	});
+function clicked(pk) {
+		$(".hahaform").hide();
+		$("#form-"+pk).show();
+		console.log(pk);
+}
 
 	function append_comments_rec(comments, parent_pk, i) {
 		for( i=0; i < comments.length; i++) {
-			console.log("i="+i);
-			console.log("comments[i]="+comments[i].txt);
 			// append
 			if(parent_pk == -1) {
-				comment = "<div class='panel panel-default' id='comment-"+comments[i].pk+"'><div class='panel-heading'>"+comments[i].username+"</div><div class='panel-body'>"+comments[i].txt+"</div><a class='reply' id='"+comments[i].pk+"'>reply</a>{% if user.is_authenticated %}<form class='form' id='form-"+comments[i].pk+"' action='/mkcomment/"+boardpk+"/"+comments[i].pk+"/' method='POST'>{% csrf_token %}<textarea rows='3' cols='40%' style='margin-left:20px' name='text'></textarea><input type='submit' value='Add comment'></form>{% endif %}</div>"
-				console.log("appending first level comment: "+comments[i].txt+" i="+i);
+				comment = "<div class='panel panel-default' id='comment-"+comments[i].pk+"'><div class='panel-heading'>"+comments[i].username+"</div><div class='panel-body'>"+comments[i].txt+"</div><a class='reply' id='"+comments[i].pk+"' onclick='clicked("+comments[i].pk+")'>reply</a>{% if user.is_authenticated %}<form class='hahaform' id='form-"+comments[i].pk+"' action='/mkcomment/"+boardpk+"/"+comments[i].pk+"/' method='POST'>{% csrf_token %}<textarea rows='3' style='margin-left:20px' name='text'></textarea><input type='submit' value='Add comment'></form>{% endif %}</div>"
+				
 				$("#insertcomments").append(comment);
-				console.log("appended first level comment: "+comments[i].txt+" i="+i);
 			} else {
-				comment = "<div style='margin: 0 auto;'><div style='margin-left: 50px;' class='panel panel-default' id='comment-"+comments[i].pk+"'><div class='panel-heading'>"+comments[i].username+"</div><div class='panel-body'>"+comments[i].txt+"</div><a class='reply' id='"+comments[i].pk+"'>reply</a>{% if user.is_authenticated %}<form class='form' id='form-"+comments[i].pk+"' action='/mkcomment/"+boardpk+"/"+comments[i].pk+"/' method='POST'>{% csrf_token %}<textarea rows='3' cols='40%' style='margin-left:20px' name='text'></textarea><input type='submit' value='Add comment'></form>{% endif %}</div></div>"
-				console.log("appending comment: "+comments[i].txt+" i="+i);
+				comment = "<div style='margin: 0 auto;'><div style='margin-left: 50px;' class='panel panel-default' id='comment-"+comments[i].pk+"'><div class='panel-heading'>"+comments[i].username+"</div><div class='panel-body'>"+comments[i].txt+"</div><a class='reply' id='"+comments[i].pk+"' onclick='clicked("+comments[i].pk+")'>reply</a>{% if user.is_authenticated %}<form  class='hahaform' id='form-"+comments[i].pk+"' action='/mkcomment/"+boardpk+"/"+comments[i].pk+"/' method='POST'>{% csrf_token %}<textarea rows='3' style='margin-left:20px' name='text'></textarea><input type='submit' value='Add comment'></form>{% endif %}</div></div>"
+				
 				$("#comment-"+parent_pk).append(comment);
-				console.log("appended comment: "+comments[i].txt+" i="+i);
 			}
 			if(comments[i].children.length > 0) {
-				console.log("going down");
 				append_comments_rec(comments[i].children, comments[i].pk, 0);
 			}
 		}
-		console.log("going back up");
 	}
 
-
-// IT ALL WORKS JUST PERFECTLY NOW. KEEP TESTING. MAKE ---NO--- CHANGES.
-// AFTER TESTING, PUSH AND PULL TO GITHUB WITH THE SERVER. LAUNCH.
 
 </script>
 {% endblock %}

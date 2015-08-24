@@ -1,0 +1,13 @@
+{
+    "folders":
+    [
+        {
+            "follow_symlinks": true,
+            "path": "~/Development/Coded/projects/MsgBoard/"
+        }
+    ],
+    "settings":
+    {
+        "python_interpreter":"~/Development/Coded/virtualenvs/MsgBoard/bin/python"
+    }
+}

@@ -16,8 +16,7 @@ import json
 # Create your views here.
 
 from main.models import Division, Board, Comment
-from main.forms import DivisionForm, BoardForm, CommentForm, UserSignup
-, UserLogin
+from main.forms import DivisionForm, BoardForm, CommentForm, UserSignup, UserLogin
 
 
 # ######################### FRONTPAGES ##################################
@@ -151,8 +150,7 @@ def usersignup(request):
 
                 return HttpResponseRedirect('/')
             except IntegrityError, e:
-                context['signup_valid'] =
-                "A user with that name is already taken. Please try again."
+                context['signup_valid'] = "A user with that name is already taken. Please try again."
 
         else:
             context['signup_valid'] = form.errors
