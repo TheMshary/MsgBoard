@@ -3,29 +3,184 @@
 
 
 
+
 <!-- Begin Body -->
 <div class="container">
 	<div class="row">
 		<div class="col-md-9">
-			<h2 id="sec0">{{ board.name }}</h2>
+			<h2 id="sec0" data-board="{{ board.pk }}">{{ board.name }}</h2>
+			<div id="insertcomments"></div>
+{% comment %}
+
 			{% for comment in comments %}
-				<div class="panel panel-default">
-					<div class="panel-heading">
-						<h5>{{ comment.user.username }}</h5>
-					</div>
+				<div class="panel panel-default" id="comment-{{comment.pk}}">
+					<div class="panel-heading">{{ comment.user.username }}</div>
 					<div class="panel-body">
-						{{ comment }}
+						{{ comment.text }}<br>
+						{% for nested_comment in comment.get_all_nested_comments %}
+							<div class="panel panel-default" id="comment-{{nested_comment.pk}}">
+								<div class="panel-heading"><h5>{{ nested_comment.user.username }}</h5></div>
+								<div class="panel-body">{{ nested_comment.text }}</div>
+							<a class="reply" id="{{comment.pk}}">reply</a>
+							{% if user.is_authenticated %}	
+								<form class="form" id="form-{{comment.pk}}" action="/mkcomment/{{board.pk}}/{{nested_comment.pk}}/" method="POST">
+								{% csrf_token %}
+								<textarea rows="3" cols="40%" style="margin-left:20px" name="text"></textarea>
+								<input type="submit" value="Add comment">
+								</form>
+							{% endif %}	
+							</div>
+						{% endfor %}
 					</div>
+				<a class="reply" id="{{comment.pk}}">reply</a>
+				{% if user.is_authenticated %}	
+					<form class="form" id="form-{{comment.pk}}" action="/mkcomment/{{board.pk}}/{{comment.pk}}/" method="POST">
+					{% csrf_token %}
+					<textarea rows="3" cols="40%" style="margin-left:20px" name="text"></textarea>
+					<input type="submit" value="Add comment">
+					</form>
+				{% endif %}	
 				</div>
 			{% endfor %}
+{% endcomment %}
 		</div>
 	</div>
-{% if user.is_authenticated %}
-	<form action="/mkcomment/{{board.pk}}/" method="POST">
-		{% csrf_token %}
-		<textarea rows="3" cols="40%" style="margin-left:20px" name="text"></textarea>
-		<input type="submit" value="Add comment">
-	</form>
-{% endif %}		
+	{% if user.is_authenticated %}
+		<form action="/mkcomment/{{board.pk}}/" method="POST">
+			{% csrf_token %}
+			<textarea rows="3" cols="40%" style="margin-left:20px" name="text"></textarea>
+			<input type="submit" value="Add comment">
+		</form>
+	{% endif %}
 </div>
+<script type="text/javascript">
+
+// This string contains the html for a single comment.
+// modify the board_url(request) view to also add the
+// pk for every comment in the tuples.
+// Then use this string to append it to the appropriate
+// div in this template. You want to append recursively.
+// So make a function that recursively appends all the
+// comments.
+
+//"<div class='panel panel-default' id='comment-"+comments[i].pk+"'><div class='panel-heading'>{{ comment.user.username }}</div><div class='panel-body'>"+comments[i].txt+"</div><a class='reply' id='"+comments[i].pk+"'>reply</a>{% if user.is_authenticated %}<form class='form' id='form-"+comments[i].pk+"' action='/mkcomment/{{board.pk}}/"+comments[i].pk+"/' method='POST'>{% csrf_token %}<textarea rows='3' cols='40%' style='margin-left:20px' name='text'></textarea><input type='submit' value='Add comment'></form>{% endif %}</div>"
+
+
+
+// I got the whole string of data for the comments.
+// But I don't know how to make use of them in
+// JavaScript.
+// Go to the console in the browser and fiddle around.
+	// Now this little shit above will work for sure.
+	// To access the data: object[0].comment to get
+	// the comment text for the first comment object
+
+
+	$(document).ready(function() {
+		boardpk = $('#sec0').data('board');
+		comments = {{ list|safe }};
+		// append to div>#insertcomments
+		append_comments_rec(comments, -1);
+	});
+
+	$(".reply").on("focusout", function() {
+		$(".reply").hide();
+	});
+
+	$(".reply").on('click', function(event) {
+		$(".form").hide();
+		$("#form-"+event.target.id).show();
+	});
+
+	function append_comments_rec(comments, parent_pk, i) {
+		for( i=0; i < comments.length; i++) {
+			console.log("i="+i);
+			console.log("comments[i]="+comments[i].txt);
+			// append
+			if(parent_pk == -1) {
+				comment = "<div class='panel panel-default' id='comment-"+comments[i].pk+"'><div class='panel-heading'>"+comments[i].username+"</div><div class='panel-body'>"+comments[i].txt+"</div><a class='reply' id='"+comments[i].pk+"'>reply</a>{% if user.is_authenticated %}<form class='form' id='form-"+comments[i].pk+"' action='/mkcomment/"+boardpk+"/"+comments[i].pk+"/' method='POST'>{% csrf_token %}<textarea rows='3' cols='40%' style='margin-left:20px' name='text'></textarea><input type='submit' value='Add comment'></form>{% endif %}</div>"
+				console.log("appending first level comment: "+comments[i].txt+" i="+i);
+				$("#insertcomments").append(comment);
+				console.log("appended first level comment: "+comments[i].txt+" i="+i);
+			} else {
+				comment = "<div style='margin: 0 auto;'><div style='margin-left: 50px;' class='panel panel-default' id='comment-"+comments[i].pk+"'><div class='panel-heading'>"+comments[i].username+"</div><div class='panel-body'>"+comments[i].txt+"</div><a class='reply' id='"+comments[i].pk+"'>reply</a>{% if user.is_authenticated %}<form class='form' id='form-"+comments[i].pk+"' action='/mkcomment/"+boardpk+"/"+comments[i].pk+"/' method='POST'>{% csrf_token %}<textarea rows='3' cols='40%' style='margin-left:20px' name='text'></textarea><input type='submit' value='Add comment'></form>{% endif %}</div></div>"
+				console.log("appending comment: "+comments[i].txt+" i="+i);
+				$("#comment-"+parent_pk).append(comment);
+				console.log("appended comment: "+comments[i].txt+" i="+i);
+			}
+			if(comments[i].children.length > 0) {
+				console.log("going down");
+				append_comments_rec(comments[i].children, comments[i].pk, 0);
+			}
+		}
+		console.log("going back up");
+	}
+
+
+// IT ALL WORKS JUST PERFECTLY NOW. KEEP TESTING. MAKE ---NO--- CHANGES.
+// AFTER TESTING, PUSH AND PULL TO GITHUB WITH THE SERVER. LAUNCH.
+
+</script>
 {% endblock %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -23,6 +23,7 @@ urlpatterns = [
 
     url(r'^mkdiv/$', 'main.views.mkdiv'),
     url(r'^mkboard/(?P<pk>\d+)/$', 'main.views.mkboard'),
+    url(r'^mkcomment/(?P<pk>\d+)/(?P<parent_comment>\d+)/$', 'main.views.mkcomment'),
     url(r'^mkcomment/(?P<pk>\d+)/$', 'main.views.mkcomment'),
 
     url(r'^div/(?P<pk>\d+)/$', 'main.views.div_url'),
