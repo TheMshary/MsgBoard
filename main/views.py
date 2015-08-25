@@ -108,14 +108,16 @@ def mkboard(request, pk):
 
 
 def mkcomment(request, pk, parent_comment=None):
+    print "pk="+pk+" ::: parent_comment="+parent_comment
     if request.method == 'POST':
         form = CommentForm(request.POST)
         if form.is_valid():
             text = form.cleaned_data['text']
             board = Board.objects.get(pk=pk)
-            comment = Comment(user=request.user, board=board, text=text,
-                              parent_comment=Comment.objects.get(
-                                pk=parent_comment))
+            if parent_comment == None:
+                comment = Comment(user=request.user, board=board, text=text)
+            else:
+                comment = Comment(user=request.user, board=board, text=text, parent_comment=Comment.objects.get(pk=parent_comment))
             comment.save()
         else:
             print "ERROR :::: "+str(form.errors)
@@ -190,8 +192,7 @@ def board_url(request, pk):
 
     context['board'] = board
     context['title'] = "Message Board"
-    context['list'] = json.dumps(
-        work_plz_v2(comments.filter(parent_comment=None)))
+    context['list'] = json.dumps(work_plz_v2(comments.filter(parent_comment=None)))
     context['comment_form'] = CommentForm()
     return render_to_response('board_page.html', context,
                               context_instance=RequestContext(request))
@@ -202,12 +203,9 @@ def work_plz_v2(comments):
     for comment in comments:
         comms = Comment.objects.filter(parent_comment=comment)
         if comms is not None:
-            ilist.append({'username': comment.user.username, 'txt':
-                          comment.text, 'pk': comment.pk,
-                          'children': work_plz_v2(comms)})
+            ilist.append({'username': comment.user.username, 'txt': comment.text, 'pk': comment.pk, 'children': work_plz_v2(comms)})
         else:
-            ilist.append({'username': comment.user.username, 'txt':
-                          comment.text, 'pk': comment.pk, 'children': None})
+            ilist.append({'username': comment.user.username, 'txt': comment.text, 'pk': comment.pk, 'children': None})
     return ilist
 
 
