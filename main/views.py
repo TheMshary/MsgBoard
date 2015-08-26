@@ -108,17 +108,16 @@ def mkboard(request, pk):
 
 
 def mkcomment(request, pk, parent_comment=None):
-    print "pk="+pk+" ::: parent_comment="+parent_comment
     if request.method == 'POST':
         form = CommentForm(request.POST)
         if form.is_valid():
             text = form.cleaned_data['text']
             board = Board.objects.get(pk=pk)
             if parent_comment == None:
-                comment = Comment(user=request.user, board=board, text=text)
+                comment, created = Comment.objects.get_or_create(user=request.user, board=board, text=text)
             else:
                 comment = Comment(user=request.user, board=board, text=text, parent_comment=Comment.objects.get(pk=parent_comment))
-            comment.save()
+                comment.save()
         else:
             print "ERROR :::: "+str(form.errors)
     else:
