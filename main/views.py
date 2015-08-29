@@ -108,7 +108,7 @@ def mkboard(request, pk):
 
 
 def mkcomment(request, pk, parent_comment=None):
-    print "pk="+pk+" ::: parent_comment="+parent_comment
+    print "pk="+pk+" ::: parent_commen.pkt="+str(parent_comment)
     if request.method == 'POST':
         form = CommentForm(request.POST)
         if form.is_valid():
