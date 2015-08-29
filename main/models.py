@@ -28,18 +28,5 @@ class Comment(models.Model):
     text = models.TextField(default="")
     parent_comment = models.ForeignKey("main.Comment", null=True, default=None)
 
-    def get_all_nested_comments(self, include_self=False):
-        qs = []
-        if include_self:
-            qs.append(self)
-        for item in Comment.objects.filter(parent_comment=self):
-            # extend() puts values from second list to the end of the first
-            # list
-            qs.extend(item.get_all_nested_comments(include_self=True))
-
-        # chain() takes multiple iterables and returns them as a single
-        # iterable
-        return chain([q for q in qs])
-
     def __unicode__(self):
         return self.text

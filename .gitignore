@@ -2,3 +2,5 @@
 */media/*
 */migrations*
 project/settings.py
+error_log
+access_log
