@@ -26,7 +26,7 @@ class Comment(models.Model):
     user = models.ForeignKey(User, null=True)
     board = models.ForeignKey("main.Board")
     text = models.TextField(default="")
-    parent_comment = models.ForeignKey("main.Comment", null=True)
+    parent_comment = models.ForeignKey("main.Comment", null=True, default=None)
 
     def get_all_nested_comments(self, include_self=False):
         qs = []

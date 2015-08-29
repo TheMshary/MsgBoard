@@ -47,8 +47,7 @@ def index(request):
     context['title'] = "home page"
     context['divs'] = divs()
 
-    return render_to_response('main.html', context,
-                              context_instance=RequestContext(request))
+    return render_to_response('main.html', context, context_instance=RequestContext(request))
 
 
 def divs():
@@ -84,8 +83,7 @@ def mkdiv(request):
 
         return HttpResponseRedirect('/')
     else:
-        return render_to_response('mkdiv.html', context,
-                                  context_instance=RequestContext(request))
+        return render_to_response('mkdiv.html', {}, context_instance=RequestContext(request))
 
 
 def mkboard(request, pk):
@@ -108,17 +106,16 @@ def mkboard(request, pk):
 
 
 def mkcomment(request, pk, parent_comment=None):
-    print "pk="+pk+" ::: parent_commen.pkt="+str(parent_comment)
     if request.method == 'POST':
         form = CommentForm(request.POST)
         if form.is_valid():
             text = form.cleaned_data['text']
             board = Board.objects.get(pk=pk)
             if parent_comment == None:
-                comment = Comment(user=request.user, board=board, text=text)
+                comment, created = Comment.objects.get_or_create(user=request.user, board=board, text=text)
             else:
                 comment = Comment(user=request.user, board=board, text=text, parent_comment=Comment.objects.get(pk=parent_comment))
-            comment.save()
+                comment.save()
         else:
             print "ERROR :::: "+str(form.errors)
     else:
@@ -159,8 +156,7 @@ def usersignup(request):
     context['signup'] = UserSignup()
     context['login'] = UserLogin()
 
-    return render_to_response('index.html', context,
-                              context_instance=RequestContext(request))
+    return render_to_response('index.html', context, context_instance=RequestContext(request))
 
 
 def userlogout(request):
@@ -181,8 +177,7 @@ def div_url(request, pk):
     context['title'] = "Division"
     context['form'] = form
     context['boards'] = boards
-    return render_to_response('div_page.html', context,
-                              context_instance=RequestContext(request))
+    return render_to_response('div_page.html', context, context_instance=RequestContext(request))
 
 
 def board_url(request, pk):
@@ -194,8 +189,7 @@ def board_url(request, pk):
     context['title'] = "Message Board"
     context['list'] = json.dumps(work_plz_v2(comments.filter(parent_comment=None)))
     context['comment_form'] = CommentForm()
-    return render_to_response('board_page.html', context,
-                              context_instance=RequestContext(request))
+    return render_to_response('board_page.html', context, context_instance=RequestContext(request))
 
 
 def work_plz_v2(comments):
