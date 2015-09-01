@@ -46,7 +46,7 @@
 		</div>
 	</div>
 	{% if user.is_authenticated %}
-		<form id="haha"action="/mkcomment/{{board.pk}}/" method="POST">
+		<form id="haha" action="/mkcomment/{{board.pk}}/" method="POST">
 			{% csrf_token %}
 			<textarea rows="3" cols="40%" style="margin-left:20px" name="text"></textarea>
 			<input type="submit" value="Add comment">
@@ -95,11 +95,11 @@ function clicked(pk) {
 		for( i=0; i < comments.length; i++) {
 			// append
 			if(parent_pk == -1) {
-				comment = "<div class='panel panel-default' id='comment-"+comments[i].pk+"'><div class='panel-heading'>"+comments[i].username+"</div><div class='panel-body'>"+comments[i].txt+"</div><a class='reply' id='"+comments[i].pk+"' onclick='clicked("+comments[i].pk+")'>reply</a>{% if user.is_authenticated %}<form class='hahaform' id='form-"+comments[i].pk+"' action='/mkcomment/"+boardpk+"/"+comments[i].pk+"/' method='POST'>{% csrf_token %}<textarea rows='3' style='margin-left:20px' name='text'></textarea><input type='submit' value='Add comment'></form>{% endif %}</div>"
+				comment = "<div class='panel panel-default' id='comment-"+ comments[i].pk+"'><div class='panel-heading'>"+comments[i].username+"</div><div class='panel-body'>"+{% autoescape on %}comments[i].txt{% endautoescape %}+"</div><a class='reply' id='"+comments[i].pk+"' onclick='clicked("+comments[i].pk+")'>reply</a>{% if user.is_authenticated %}<form class='hahaform' id='form-"+comments[i].pk+"' action='/mkcomment/"+boardpk+"/"+comments[i].pk+"/' method='POST'>{% csrf_token %}<textarea rows='3' style='margin-left:20px' name='text'></textarea><input type='submit' value='Add comment'></form>{% endif %}</div>"
 				
 				$("#insertcomments").append(comment);
 			} else {
-				comment = "<div style='margin: 0 auto;'><div style='margin-left: 50px;' class='panel panel-default' id='comment-"+comments[i].pk+"'><div class='panel-heading'>"+comments[i].username+"</div><div class='panel-body'>"+comments[i].txt+"</div><a class='reply' id='"+comments[i].pk+"' onclick='clicked("+comments[i].pk+")'>reply</a>{% if user.is_authenticated %}<form  class='hahaform' id='form-"+comments[i].pk+"' action='/mkcomment/"+boardpk+"/"+comments[i].pk+"/' method='POST'>{% csrf_token %}<textarea rows='3' style='margin-left:20px' name='text'></textarea><input type='submit' value='Add comment'></form>{% endif %}</div></div>"
+				comment = escape("<div style='margin: 0 auto;'><div style='margin-left: 50px;' class='panel panel-default' id='comment-"+comments[i].pk+"'><div class='panel-heading'>"+comments[i].username+"</div><div class='panel-body'>"+{% autoescape on %}comments[i].txt{% endautoescape %}+"</div><a class='reply' id='"+comments[i].pk+"' onclick='clicked("+comments[i].pk+")'>reply</a>{% if user.is_authenticated %}<form  class='hahaform' id='form-"+comments[i].pk+"' action='/mkcomment/"+boardpk+"/"+comments[i].pk+"/' method='POST'>{% csrf_token %}<textarea rows='3' style='margin-left:20px' name='text'></textarea><input type='submit' value='Add comment'></form>{% endif %}</div></div>"
 				
 				$("#comment-"+parent_pk).append(comment);
 			}
