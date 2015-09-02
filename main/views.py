@@ -112,10 +112,9 @@ def mkcomment(request, pk, parent_comment=None):
             text = form.cleaned_data['text']
             board = Board.objects.get(pk=pk)
             if parent_comment == None:
-                comment, created = Comment.objects.get_or_create(user=request.user, board=board, text=text)
+                comment = Comment.objects.create(user=request.user, board=board, text=text)
             else:
-                comment = Comment(user=request.user, board=board, text=text, parent_comment=Comment.objects.get(pk=parent_comment))
-                comment.save()
+                comment = Comment.objects.create(user=request.user, board=board, text=text, parent_comment=Comment.objects.get(pk=parent_comment))
         else:
             print "ERROR :::: "+str(form.errors)
     else:
