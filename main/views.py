@@ -113,7 +113,7 @@ def mkcomment(request, pk, parent_comment=None):
             board = Board.objects.get(pk=pk)
             if parent_comment == None:
                 comment = Comment.objects.create(user=request.user, board=board, text=text)
-            else:
+	    else:
                 comment = Comment.objects.create(user=request.user, board=board, text=text, parent_comment=Comment.objects.get(pk=parent_comment))
         else:
             print "ERROR :::: "+str(form.errors)
