@@ -55,26 +55,6 @@
 </div>
 <script type="text/javascript">
 
-// This string contains the html for a single comment.
-// modify the board_url(request) view to also add the
-// pk for every comment in the tuples.
-// Then use this string to append it to the appropriate
-// div in this template. You want to append recursively.
-// So make a function that recursively appends all the
-// comments.
-
-//"<div class='panel panel-default' id='comment-"+comments[i].pk+"'><div class='panel-heading'>{{ comment.user.username }}</div><div class='panel-body'>"+comments[i].txt+"</div><a class='reply' id='"+comments[i].pk+"'>reply</a>{% if user.is_authenticated %}<form class='form' id='form-"+comments[i].pk+"' action='/mkcomment/{{board.pk}}/"+comments[i].pk+"/' method='POST'>{% csrf_token %}<textarea rows='3' cols='40%' style='margin-left:20px' name='text'></textarea><input type='submit' value='Add comment'></form>{% endif %}</div>"
-
-
-
-// I got the whole string of data for the comments.
-// But I don't know how to make use of them in
-// JavaScript.
-// Go to the console in the browser and fiddle around.
-	// Now this little shit above will work for sure.
-	// To access the data: object[0].comment to get
-	// the comment text for the first comment object
-
 
 	$(document).ready(function() {
 		boardpk = $('#sec0').data('board');
@@ -85,21 +65,21 @@
 		$(".hahaform").hide();
 	});
 
-function clicked(pk) {
-		$(".hahaform").hide();
-		$("#form-"+pk).show();
-		console.log(pk);
-}
+    function clicked(pk) {
+            $(".hahaform").hide();
+            $("#form-"+pk).show();
+            console.log(pk);
+    }
 
 	function append_comments_rec(comments, parent_pk, i) {
 		for( i=0; i < comments.length; i++) {
 			// append
 			if(parent_pk == -1) {
-				comment = "<div class='panel panel-default' id='comment-"+ comments[i].pk+"'><div class='panel-heading'>"+comments[i].username+"</div><div class='panel-body'>"+{% autoescape on %}comments[i].txt{% endautoescape %}+"</div><a class='reply' id='"+comments[i].pk+"' onclick='clicked("+comments[i].pk+")'>reply</a>{% if user.is_authenticated %}<form class='hahaform' id='form-"+comments[i].pk+"' action='/mkcomment/"+boardpk+"/"+comments[i].pk+"/' method='POST'>{% csrf_token %}<textarea rows='3' style='margin-left:20px' name='text'></textarea><input type='submit' value='Add comment'></form>{% endif %}</div>"
+				comment = "<div class='panel panel-default' id='comment-"+ comments[i].pk+"'><div class='panel-heading'>"+comments[i].username+"</div><div class='panel-body'>"+comments[i].txt+"</div><a class='reply' id='"+comments[i].pk+"' onclick='clicked("+comments[i].pk+")'>reply</a>{% if user.is_authenticated %}<form class='hahaform' id='form-"+comments[i].pk+"' action='/mkcomment/"+boardpk+"/"+comments[i].pk+"/' method='POST'>{% csrf_token %}<textarea rows='3' style='margin-left:20px' name='text'></textarea><input type='submit' value='Add comment'></form>{% endif %}</div>"
 				
 				$("#insertcomments").append(comment);
 			} else {
-				comment = escape("<div style='margin: 0 auto;'><div style='margin-left: 50px;' class='panel panel-default' id='comment-"+comments[i].pk+"'><div class='panel-heading'>"+comments[i].username+"</div><div class='panel-body'>"+{% autoescape on %}comments[i].txt{% endautoescape %}+"</div><a class='reply' id='"+comments[i].pk+"' onclick='clicked("+comments[i].pk+")'>reply</a>{% if user.is_authenticated %}<form  class='hahaform' id='form-"+comments[i].pk+"' action='/mkcomment/"+boardpk+"/"+comments[i].pk+"/' method='POST'>{% csrf_token %}<textarea rows='3' style='margin-left:20px' name='text'></textarea><input type='submit' value='Add comment'></form>{% endif %}</div></div>"
+				comment = "<div style='margin: 0 auto;'><div style='margin-left: 50px;' class='panel panel-default' id='comment-"+comments[i].pk+"'><div class='panel-heading'>"+comments[i].username+"</div><div class='panel-body'>"+comments[i].txt+"</div><a class='reply' id='"+comments[i].pk+"' onclick='clicked("+comments[i].pk+"'>reply</a>{% if user.is_authenticated %}<form  class='hahaform' id='form-"+comments[i].pk+"' action='/mkcomment/"+boardpk+"/"+comments[i].pk+"/' method='POST'>{% csrf_token %}<textarea rows='3' style='margin-left:20px' name='text'></textarea><input type='submit' value='Add comment'></form>{% endif %}</div></div>"
 				
 				$("#comment-"+parent_pk).append(comment);
 			}
