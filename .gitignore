@@ -4,3 +4,5 @@
 project/settings.py
 error_log
 access_log
+.idea/*
+.idea/

@@ -112,9 +112,11 @@ def mkcomment(request, pk, parent_comment=None):
             text = form.cleaned_data['text']
             board = Board.objects.get(pk=pk)
             if parent_comment == None:
-                comment = Comment.objects.create(user=request.user, board=board, text=text)
+                comment = Comment.objects.create(
+                    user=request.user, board=board, text=text)
             else:
-                comment = Comment.objects.create(user=request.user, board=board, text=text, parent_comment=Comment.objects.get(pk=parent_comment))
+                comment = Comment.objects.create(
+                    user=request.user, board=board, text=text, parent_comment=Comment.objects.get(pk=parent_comment))
         else:
             print "ERROR :::: "+str(form.errors)
     else:
@@ -148,7 +150,8 @@ def usersignup(request):
 
                 return HttpResponseRedirect('/')
             except IntegrityError, e:
-                context['signup_valid'] = "A user with that name is already taken. Please try again."
+                context[
+                    'signup_valid'] = "A user with that name is already taken. Please try again."
 
         else:
             context['signup_valid'] = form.errors
@@ -186,7 +189,8 @@ def board_url(request, pk):
 
     context['board'] = board
     context['title'] = "Message Board"
-    context['list'] = json.dumps(work_plz_v2(comments.filter(parent_comment=None)))
+    context['list'] = json.dumps(
+        work_plz_v2(comments.filter(parent_comment=None)))
     context['comment_form'] = CommentForm()
     return render_to_response('board_page.html', context, context_instance=RequestContext(request))
 
@@ -196,9 +200,11 @@ def work_plz_v2(comments):
     for comment in comments:
         comms = Comment.objects.filter(parent_comment=comment)
         if comms is not None:
-            ilist.append({'username': comment.user.username, 'txt': comment.text, 'pk': comment.pk, 'children': work_plz_v2(comms)})
+            ilist.append({'username': comment.user.username, 'txt':
+                          comment.text, 'pk': comment.pk, 'children': work_plz_v2(comms)})
         else:
-            ilist.append({'username': comment.user.username, 'txt': comment.text, 'pk': comment.pk, 'children': None})
+            ilist.append({'username': comment.user.username, 'txt':
+                          comment.text, 'pk': comment.pk, 'children': None})
     return ilist
 
 
